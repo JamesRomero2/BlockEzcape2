@@ -1,3 +1,11 @@
-[gd_scene format=2]
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://GameObjects/Entities/Player/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://GameObjects/Interactables/SingleValueBox/SingleValueBox.tscn" type="PackedScene" id=3]
 
 [node name="Prototype" type="Node"]
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+
+[node name="SingleValueBox" parent="." instance=ExtResource( 3 )]
+position = Vector2( 53, 0 )
