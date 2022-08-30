@@ -11,7 +11,6 @@ func _ready():
 
 func _process(delta):
 	move_and_slide(inputVector * MOVEMENTSPEED)
-	print(position)
 
 func _inputVector(value: Vector2) -> void:
 	inputVector = value
