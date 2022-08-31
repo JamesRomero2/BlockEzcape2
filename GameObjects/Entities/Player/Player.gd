@@ -31,10 +31,6 @@ func _raycastCollision():
 	if raycast.is_colliding():
 		var objectCollided = raycast.get_collider()
 		if objectCollided.is_in_group("Box"):
-			var texture = ImageTexture.new()
-			var image = Image.new()
-			image.load("res://Assets/Images/GrabIcon.png")
-			texture.create_from_image(image)
-			buttonTexture._setButtonTexture(texture)
+			buttonTexture._setButtonTexture(1)
 	else:
-		buttonTexture._setButtonTexture(null)
+		buttonTexture._setButtonTexture(0)
