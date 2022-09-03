@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 onready var joyStick := $MobileControl/JoyStickContainer/JoyStick/Inner
 onready var buttonTexture := $MobileControl/Buttons/DynamicButton
+onready var dashButton := $MobileControl/Buttons/Dash
 onready var raycast := $RayCast2D
 
 const MOVEMENTSPEED: int = 100
@@ -11,6 +12,7 @@ var inputVector: Vector2 = Vector2.ZERO
 
 func _ready():
 	joyStick.connect("directionValue", self, "_inputVector")
+	dashButton.connect("dashClicked", self, "_playerDashed")
 
 func _process(delta):
 	_raycastRotation(inputVector)
@@ -24,7 +26,7 @@ func _raycastRotation(vector: Vector2):
 		raycast.set_cast_to(raycast.get_cast_to())
 	else:
 		raycast.set_cast_to(vector * LOOKLENGTH)
-		
+
 	_raycastCollision()
 
 func _raycastCollision():
@@ -34,3 +36,6 @@ func _raycastCollision():
 			buttonTexture._setButtonTexture(1)
 	else:
 		buttonTexture._setButtonTexture(0)
+
+func _playerDashed():
+	move_and_slide(inputVector * (MOVEMENTSPEED * 50))

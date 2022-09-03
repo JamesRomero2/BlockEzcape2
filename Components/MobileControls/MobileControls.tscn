@@ -26,3 +26,5 @@ position = Vector2( -108, -88 )
 
 [node name="Dash" parent="Buttons" instance=ExtResource( 3 )]
 position = Vector2( -56, -139 )
+
+[connection signal="pressed" from="Buttons/Dash" to="Buttons/Dash" method="_on_Dash_pressed"]

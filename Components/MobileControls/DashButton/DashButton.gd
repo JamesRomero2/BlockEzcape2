@@ -4,11 +4,11 @@ signal dashClicked
 
 var dashAvailable: bool = true
 
-func _input(event):
-	if (event is InputEventScreenTouch and event.is_pressed()) and dashAvailable:
+func _on_Timer_timeout():
+	dashAvailable = true
+
+func _on_Dash_pressed():
+	if dashAvailable:
 		emit_signal("dashClicked")
 		dashAvailable = false
 		$Timer.start()
-
-func _on_Timer_timeout():
-	dashAvailable = true
