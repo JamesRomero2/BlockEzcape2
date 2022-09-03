@@ -14,3 +14,5 @@ script = ExtResource( 2 )
 
 [node name="ButtonTexture" type="Sprite" parent="."]
 centered = false
+
+[connection signal="pressed" from="." to="." method="_on_DynamicButton_pressed"]

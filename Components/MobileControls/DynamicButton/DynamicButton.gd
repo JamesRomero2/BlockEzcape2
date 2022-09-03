@@ -1,6 +1,10 @@
 extends TouchScreenButton
 
+signal dynamicButtonPressed
+
 onready var buttonTexture := $ButtonTexture
+
+var buttonState: int = 0
 
 var buttonIcons = {
 #	Blank Icon
@@ -11,3 +15,12 @@ var buttonIcons = {
 
 func _setButtonTexture(value: int):
 	buttonTexture.texture = buttonIcons[value]
+	buttonState = value
+
+func _on_DynamicButton_pressed():
+	match buttonState:
+		0:
+			print("Return")
+		1:
+			print("Grab")
+			emit_signal("dynamicButtonPressed")

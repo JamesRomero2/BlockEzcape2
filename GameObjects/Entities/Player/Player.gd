@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 onready var joyStick := $MobileControl/JoyStickContainer/JoyStick/Inner
-onready var buttonTexture := $MobileControl/Buttons/DynamicButton
+onready var dynamicButton := $MobileControl/Buttons/DynamicButton
 onready var dashButton := $MobileControl/Buttons/Dash
 onready var raycast := $RayCast2D
 
@@ -33,9 +33,10 @@ func _raycastCollision():
 	if raycast.is_colliding():
 		var objectCollided = raycast.get_collider()
 		if objectCollided.is_in_group("Box"):
-			buttonTexture._setButtonTexture(1)
+			dynamicButton._setButtonTexture(1)
+			
 	else:
-		buttonTexture._setButtonTexture(0)
+		dynamicButton._setButtonTexture(0)
 
 func _playerDashed():
 	move_and_slide(inputVector * (MOVEMENTSPEED * 50))
